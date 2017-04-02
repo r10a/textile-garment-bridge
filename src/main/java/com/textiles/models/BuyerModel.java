@@ -1,12 +1,8 @@
 package com.textiles.models;
 
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -15,15 +11,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "SELLERS")
+@Table(name = "BUYERS")
 @Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SellerModel {
-
+public class BuyerModel {
+	
 	@Id
-	@Column(name = "PK_SELLER_ID")
+	@Column(name = "PK_BUYER_ID")
 	Long id;
 
 	@Column(name = "FIRST_NAME")
@@ -53,19 +49,4 @@ public class SellerModel {
 	@Column(name = "ADDRESS")
 	String address;
 
-	@Column(name = "TYPE")
-	String type;
-	
-	@OneToMany(mappedBy = "seller", cascade = CascadeType.ALL)
-	Set<RawMaterialModel> rawMaterials;
-	
-	@OneToMany(mappedBy = "seller", cascade = CascadeType.ALL)
-	Set<YarnModel> yarns;
-	
-	@OneToMany(mappedBy = "seller", cascade = CascadeType.ALL)
-	Set<FabricModel> fabrics;
-	
-	@OneToMany(mappedBy = "seller", cascade = CascadeType.ALL)
-	Set<GarmentModel> garments;
-	
 }
