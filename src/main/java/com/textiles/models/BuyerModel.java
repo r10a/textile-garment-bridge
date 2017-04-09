@@ -2,6 +2,7 @@ package com.textiles.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -19,6 +20,7 @@ import lombok.NoArgsConstructor;
 public class BuyerModel {
 	
 	@Id
+	@GeneratedValue
 	@Column(name = "PK_BUYER_ID")
 	Long id;
 

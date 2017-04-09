@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="h3">fabrics</div>
+    </div>
+    <div class="col-md-2">
+        <button ng-click="addFabric()" class="btn btn-primary">Add Fabric</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="row" ng-repeat="fabric in seller.fabrics">
+            <div class="col-md-1">Image</div>
+            <div class="col-md-3">{{fabric.name}}</div>
+            <div class="col-md-3">{{fabric.weaveType}}</div>
+            <div class="col-md-3">{{fabric.yarnType}}</div>
+            <div class="col-md-1">{{fabric.length}}</div>
+            <div class="col-md-1">{{fabric.price}}</div>
+        </div>
+    </div>
+</div>
