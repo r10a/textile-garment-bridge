@@ -8,6 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,8 +19,8 @@ import lombok.NoArgsConstructor;
 @Table(name = "RAW_MATERIALS")
 @Data
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class RawMaterialModel {
 	
 	@Id
@@ -41,6 +43,7 @@ public class RawMaterialModel {
 	@Column(name = "PRICE")
 	Double price;
 	
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "FK_SELLER_ID")
 	SellerModel seller;

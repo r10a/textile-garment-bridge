@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -59,15 +61,19 @@ public class SellerModel {
 	@Column(name = "TYPE")
 	String type;
 
+	@JsonManagedReference
 	@OneToMany(mappedBy = "seller", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	Set<RawMaterialModel> rawMaterials;
 
+	@JsonManagedReference
 	@OneToMany(mappedBy = "seller", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	Set<YarnModel> yarns;
 
+	@JsonManagedReference
 	@OneToMany(mappedBy = "seller", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	Set<FabricModel> fabrics;
 
+	@JsonManagedReference
 	@OneToMany(mappedBy = "seller", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	Set<GarmentModel> garments;
 

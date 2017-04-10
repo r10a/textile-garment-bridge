@@ -1,86 +1,94 @@
 (function (app) {
-    app.controller("SellerController", SellerController);
-    app.controller("AddFabricController", AddFabricController);
-    app.controller("AddGarmentController", AddGarmentController);
-    app.controller("AddYarnController", AddYarnController);
-    app.controller("AddRawMaterialController", AddRawMaterialController);
+	app.controller("SellerController", SellerController);
+	app.controller("FabricController", FabricController);
+	app.controller("GarmentController", GarmentController);
+	app.controller("YarnController", YarnController);
+	app.controller("RawMaterialController", RawMaterialController);
 
-    SellerController.$inject = ['$scope', '$http', '$state', '$stateParams'];
+	SellerController.$inject = ['$scope', '$http', '$state', '$stateParams'];
 
-    function SellerController($scope, $http, $state, $stateParams) {
+	function SellerController($scope, $http, $state, $stateParams) {
 
-        console.log($stateParams);
-        $scope.seller = $stateParams.user;
+		activate();
+		//		testPage();
+		function activate() {
+			$scope.seller = $stateParams.user;
+			console.log(angular.toJson($scope.seller));
+			$state.go('sellerPage.fabrics', {
+				seller: $scope.seller
+			});
+		}
 
-        $http.get("/sellers/search/getAllInfo/id?=" + $scope.seller.id).then(response => {
-            $scope.seller = response.data._embedded.sellers[0];
-            $state.go('sellerPage.fabrics', {
-                seller: $scope.seller
-            });
-        });
-    }
+		function testPage() {
+			$http.get('./app/data/seller.json').then(response => {
+				$scope.seller = response.data;
+				console.log($scope.seller);
+			});
+		}
 
-    AddFabricController.$inject = ['$scope', '$http', '$state', '$uibModal', '$stateParams'];
+	}
 
-    function AddFabricController($scope, $http, $state, $uibModal, $stateParams) {
+	FabricController.$inject = ['$scope', '$http', '$state', '$uibModal', '$stateParams'];
 
-        $scope.addFabric = addFabric;
-        $scope.seller = $stateParams.seller;
+	function FabricController($scope, $http, $state, $uibModal, $stateParams) {
 
-        function addFabric() {
+		$scope.fabrics = [];
+		$scope.addFabric = addFabric;
+		$scope.seller = $stateParams.seller;
 
-            modalController.$inject = ['$scope', 'item', '$http'];
+		activate();
 
-            function modalController($scope, item, $http) {
-                $scope.product = item.type;
-                $scope.fabric = {};
-            }
+		function activate() {
+			$http.get($scope.seller._links.fabrics.href).then(response => {
+				$scope.fabrics = response.data._embedded.fabrics;
+			});
+		}
 
-            let modalInstance = $uibModal.open({
-                animation: true,
-                ariaLabelledBy: 'modal-title',
-                ariaDescribedBy: 'modal-body',
-                templateUrl: './pages/modals/add-product.html',
-                controller: modalController,
-                size: 'lg',
-                resolve: {
-                    item: function () {
-                        return {
-                            type: "Fabric"
-                        };
-                    }
-                }
-            });
-            modalInstance.result.then(fabric => {
-                $scope.seller.fabrics.push(fabric);
-                $http.put($scope.seller._links.self.href, $scope.seller).then(response => {
-                    $scope.seller = response.data;
-                });
-            });
+		function addFabric() {
 
-        }
-    }
+			modalController.$inject = ['$scope', '$http'];
 
-    AddGarmentController.$inject = ['$scope', '$http', '$state', '$uibModal', '$stateParams'];
+			function modalController($scope, $http) {
+				$scope.fabric = {};
+			}
 
-    function AddGarmentController($scope, $http, $state, $uibModal, $stateParams) {
+			let modalInstance = $uibModal.open({
+				animation: true,
+				ariaLabelledBy: 'modal-title',
+				ariaDescribedBy: 'modal-body',
+				templateUrl: './pages/modals/add-fabric.html',
+				controller: modalController
+			});
 
+			modalInstance.result.then(fabric => {
+				$http.post($scope.seller._links.fabrics.href, fabric).then(response => {
+					activate();
+				});
+			});
 
-    }
+		}
+	}
 
-    AddYarnController.$inject = ['$scope', '$http', '$state', '$uibModal', '$stateParams'];
+	GarmentController.$inject = ['$scope', '$http', '$state', '$uibModal', '$stateParams'];
 
-    function AddYarnController($scope, $http, $state, $uibModal, $stateParams) {
-
-
-    }
-
-    AddRawMaterialController.$inject = ['$scope', '$http', '$state', '$uibModal', '$stateParams'];
-
-    function AddRawMaterialController($scope, $http, $state, $uibModal, $stateParams) {
+	function GarmentController($scope, $http, $state, $uibModal, $stateParams) {
 
 
-    }
+	}
+
+	YarnController.$inject = ['$scope', '$http', '$state', '$uibModal', '$stateParams'];
+
+	function YarnController($scope, $http, $state, $uibModal, $stateParams) {
+
+
+	}
+
+	RawMaterialController.$inject = ['$scope', '$http', '$state', '$uibModal', '$stateParams'];
+
+	function RawMaterialController($scope, $http, $state, $uibModal, $stateParams) {
+
+
+	}
 
 
 })(angular.module("myApp"));
