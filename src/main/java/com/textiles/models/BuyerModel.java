@@ -6,17 +6,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "BUYERS")
-@Builder
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class BuyerModel {
 	
 	@Id

@@ -13,10 +13,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "ADMIN")
-@Builder
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class AdminModel {
 	
 	@Id

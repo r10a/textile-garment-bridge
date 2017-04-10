@@ -9,18 +9,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "FABRICS")
 @Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 public class FabricModel {
 
 	@Id
@@ -45,10 +40,5 @@ public class FabricModel {
 	
 	@Column(name = "PRICE")
 	Double price;
-	
-	@JsonBackReference
-	@ManyToOne
-	@JoinColumn(name = "FK_SELLER_ID")
-	SellerModel seller;
 
 }

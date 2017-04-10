@@ -8,22 +8,17 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "SELLERS")
-@Builder
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class SellerModel {
 
 	@Id
@@ -61,20 +56,24 @@ public class SellerModel {
 	@Column(name = "TYPE")
 	String type;
 
-	@JsonManagedReference
-	@OneToMany(mappedBy = "seller", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "FK_SELLER_ID")
 	Set<RawMaterialModel> rawMaterials;
 
-	@JsonManagedReference
-	@OneToMany(mappedBy = "seller", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "FK_SELLER_ID")
 	Set<YarnModel> yarns;
 
-	@JsonManagedReference
-	@OneToMany(mappedBy = "seller", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "FK_SELLER_ID")
 	Set<FabricModel> fabrics;
 
-	@JsonManagedReference
-	@OneToMany(mappedBy = "seller", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "FK_SELLER_ID")
 	Set<GarmentModel> garments;
 
 }
