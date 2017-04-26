@@ -1,63 +1,45 @@
 (function (app) {
-	app.config(appRouterConfig);
 
-	appRouterConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
+    app.value('CART', (function () {
+        return {
+            "products": new Set()
+        }
+    })());
 
-	function appRouterConfig($stateProvider, $urlRouterProvider) {
-		$urlRouterProvider.otherwise("/login");
+    app.value('USER', (function () {
+        return {
+            "info": null
+        };
+    })());
 
-		$stateProvider.state('login', {
-			url: "/login",
-			controller: "LoginController",
-			templateUrl: "./pages/login.html"
-		}).state('sellerPage', {
-			url: "/seller",
-			controller: "SellerController",
-			templateUrl: "./pages/seller.html",
-			params: {
-				user: null
-			}
-		}).state('sellerPage.fabrics', {
-			url: "/fabrics",
-			parent: 'sellerPage',
-			controller: "FabricController",
-			templateUrl: "./pages/seller-fabrics.html",
-			params: {
-				seller: null
-			}
-		}).state('sellerPage.garments', {
-			url: "/garments",
-			parent: 'sellerPage',
-			controller: "GarmentController",
-			templateUrl: "./pages/seller-garments.html",
-			params: {
-				seller: null
-			}
-		}).state('sellerPage.yarns', {
-			url: "/yarns",
-			parent: 'sellerPage',
-			controller: "YarnController",
-			templateUrl: "./pages/seller-yarns.html",
-			params: {
-				seller: null
-			}
-		}).state('sellerPage.rawMaterials', {
-			url: "/raw-materials",
-			parent: 'sellerPage',
-			controller: "RawMaterialController",
-			templateUrl: "./pages/seller-raw-materials.html",
-			params: {
-				seller: null
-			}
-		}).state('buyerPage', {
-			url: "/buyer",
-			controller: "BuyerController",
-			templateUrl: "./pages/buyer.html"
-		}).state('adminConsole', {
-			url: "/admin",
-			controller: "AdminController",
-			templateUrl: "./pages/admin.html"
-		});
-	}
+    app.config(appRouterConfig);
+
+    appRouterConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
+
+    function appRouterConfig($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.otherwise("/home");
+
+        $stateProvider.state('home', {
+            url: "/home",
+            controller: "HomeController",
+            templateUrl: "./pages/home.html"
+        }).state('products', {
+            url: "/products",
+            controller: "ProductsController",
+            templateUrl: "./pages/products.html"
+        }).state('cart', {
+            url: "/cart",
+            controller: "CartController",
+            templateUrl: "./pages/cart.html"
+        }).state('login', {
+            url: "/login",
+            controller: "LoginController",
+            templateUrl: "./pages/login.html"
+        }).state('sell', {
+            url: "/sell",
+            controller: "SellerController",
+            templateUrl: "./pages/products-seller.html"
+        });
+    }
 
 })(angular.module("myApp"));

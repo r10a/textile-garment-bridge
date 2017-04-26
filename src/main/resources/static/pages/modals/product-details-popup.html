@@ -1,0 +1,39 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title" ng-bind="product.name + ' Details'"></h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="view-product">
+                        <img src="images/product-details/1.jpg" alt="" />
+                        <h3>ZOOM</h3>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="product-information">
+                        <!--/product-information-->
+                        <img src="images/product-details/new.jpg" class="newarrival" alt="" />
+                        <h2 ng-bind="product.name"></h2>
+                        <p>Web ID: 1089772</p>
+                        <img src="images/product-details/rating.png" alt="" />
+                        <span>
+									<span ng-bind="'Rs. ' + product.price"></span>
+                        <label>Quantity:</label>
+                        <input type="text" value="3" />
+                        </span>
+                        <p><b>Availability:</b> In Stock</p>
+                        <p><b>Condition:</b> New</p>
+                        <p><b>Brand:</b> E-SHOPPER</p>
+                        <a href=""><img src="images/product-details/share.png" class="share img-responsive" alt="" /></a>
+                    </div>
+                    <!--/product-information-->
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="$close()">OK</button>
+</div>

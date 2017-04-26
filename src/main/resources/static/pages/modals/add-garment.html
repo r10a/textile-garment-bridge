@@ -1,0 +1,47 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Garment Details</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label for="name">Name</label>
+                <input id="name" type="text" class="form-control" ng-model="product.name">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label for="name">Specification</label>
+                <input id="name" type="text" class="form-control" ng-model="product.specification">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label for="name">Size</label>
+                <input id="name" type="text" class="form-control" ng-model="product.size">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label for="name">Styling</label>
+                <input id="name" type="text" class="form-control" ng-model="product.styling">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label for="name">Quantity</label>
+                <input id="name" type="text" class="form-control" ng-model="product.quantity">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label for="name">Price</label>
+                <input id="name" type="text" class="form-control" ng-model="product.price">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="$close(product)">OK</button>
+    <button class="btn btn-primary" type="button" ng-click="$dismiss()">Cancel</button>
+</div>

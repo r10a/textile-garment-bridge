@@ -1,20 +1,25 @@
-<div class="row">
-	<div class="col-md-6">
-		<div class="h3">fabrics</div>
-	</div>
-	<div class="col-md-2">
-		<button ng-click="addFabric()" class="btn btn-primary">Add Fabric</button>
-	</div>
-</div>
-<div class="row">
-	<div class="col-md-6">
-		<div class="row" ng-repeat="fabric in fabrics">
-			<div class="col-md-1">Image</div>
-			<div class="col-md-3">{{fabric.name}}</div>
-			<div class="col-md-3">{{fabric.weaveType}}</div>
-			<div class="col-md-3">{{fabric.yarnType}}</div>
-			<div class="col-md-1">{{fabric.length}}</div>
-			<div class="col-md-1">{{fabric.price}}</div>
-		</div>
-	</div>
+<div class="container">
+    <div class="row row-padding-bottom">
+        <div class="col-md-8">
+            <div class="h3">Fabrics</div>
+        </div>
+        <div class="col-md-2">
+            <button ng-click="addFabric()" class="btn btn-primary">Add Fabric</button>
+        </div>
+    </div>
+    <div class="row row-padding-bottom">
+        <div class="col-md-10">
+            <div class="row row-padding-bottom well" ng-repeat="fabric in fabrics">
+                <div class="col-md-2"><img src="" alt="" class="img img-responsive img-rounded"></div>
+                <div class="col-md-2">{{fabric.name}}</div>
+                <div class="col-md-2">{{fabric.weaveType}}</div>
+                <div class="col-md-2">{{fabric.yarnType}}</div>
+                <div class="col-md-1">{{fabric.width + ' m'}}</div>
+                <div class="col-md-1">{{fabric.length + ' m'}}</div>
+                <div class="col-md-1">{{'Rs. ' + fabric.price}}</div>
+                <div class="col-md-1"><button class="btn btn-danger" ng-click="deleteFabric(fabric)"><i class="fa fa-trash"></i></button></div>
+            </div>
+        </div>
+    </div>
+
 </div>

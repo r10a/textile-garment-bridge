@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row row-padding-bottom">
+        <div class="col-md-8">
+            <div class="h3">Garments</div>
+        </div>
+        <div class="col-md-2">
+            <button ng-click="addGarment()" class="btn btn-primary">Add Garment</button>
+        </div>
+    </div>
+    <div class="row row-padding-bottom">
+        <div class="col-md-10">
+            <div class="row row-padding-bottom well" ng-repeat="garment in garments">
+                <div class="col-md-2"><img src="" alt="" class="img img-responsive img-rounded"></div>
+                <div class="col-md-2">{{garment.name}}</div>
+                <div class="col-md-2">{{garment.specification}}</div>
+                <div class="col-md-2">{{garment.size}}</div>
+                <div class="col-md-1">{{garment.styling}}</div>
+                <div class="col-md-1">{{garment.quantity}}</div>
+                <div class="col-md-1">{{'Rs. ' + garment.price}}</div>
+                <div class="col-md-1"><button class="btn btn-danger" ng-click="deleteGarment(garment)"><i class="fa fa-trash"></i></button></div>
+            </div>
+        </div>
+    </div>
+
+</div>

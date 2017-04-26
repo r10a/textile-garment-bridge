@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row row-padding-bottom">
+        <div class="col-md-8">
+            <div class="h3">Raw Materials</div>
+        </div>
+        <div class="col-md-2">
+            <button ng-click="addMaterial()" class="btn btn-primary">Add Raw-Material</button>
+        </div>
+    </div>
+    <div class="row row-padding-bottom">
+        <div class="col-md-10">
+            <div class="row row-padding-bottom well" ng-repeat="material in materials">
+                <div class="col-md-2"><img src="" alt="" class="img img-responsive img-rounded"></div>
+                <div class="col-md-2">{{material.name}}</div>
+                <div class="col-md-2">{{material.nature}}</div>
+                <div class="col-md-2">{{material.weight + ' kg'}}</div>
+                <div class="col-md-1">{{material.quantity}}</div>
+                <div class="col-md-1">{{'Rs. ' + material.price}}</div>
+                <div class="col-md-1"><button class="btn btn-danger" ng-click="deleteMaterial(material)"><i class="fa fa-trash"></i></button></div>
+            </div>
+        </div>
+    </div>
+
+</div>

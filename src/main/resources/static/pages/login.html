@@ -1,74 +1,41 @@
-<style>
-	body {
-		background: #76b852;
-		/* fallback for old browsers */
-		background: -webkit-linear-gradient(right, #76b852, #8DC26F);
-		background: -moz-linear-gradient(right, #76b852, #8DC26F);
-		background: -o-linear-gradient(right, #76b852, #8DC26F);
-		background: linear-gradient(to left, #76b852, #8DC26F);
-		font-family: "Roboto", sans-serif;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-	}
-	
-	.container {
-		position: relative;
-		z-index: 1;
-		max-width: 300px;
-		margin: 0 auto;
-	}
-
-</style>
-
-<div class="container">
-	<div class="login-page">
-		<div class="form">
-			<h3>Textile Garment Bridge</h3>
-			<div ng-show="isUser">
-				<form class="login-form" ng-show="hasLogin">
-					<div class="form-inline">
-						<div class="radio">
-							<label for="seller">Seller</label>
-							<input id="seller" type="radio" name="type" value="/sellers" ng-model="type" checked="checked">
-						</div>
-						<div class="radio">
-							<label for="buyer">Buyer</label>
-							<input id="buyer" type="radio" name="type" ng-model="type" value="/buyers">
-						</div>
-					</div>
-					<input type="text" placeholder="username" ng-model="email" />
-					<input type="password" placeholder="password" ng-model="inputpassword" />
-					<button ng-click="login()">login</button>
-					<p class="message">Not registered? <a class="cursor-pointer" ng-click="hasLogin = !hasLogin">Create an account</a></p>
-				</form>
-				<form class="register-form" ng-hide="hasLogin">
-					<div class="form-inline">
-						<div class="radio">
-							<label for="seller">Seller</label>
-							<input id="seller" type="radio" name="type" value="/sellers" ng-model="type" checked="checked">
-						</div>
-						<div class="radio">
-							<label for="buyer">Buyer</label>
-							<input id="buyer" type="radio" name="type" ng-model="type" value="/buyers">
-						</div>
-					</div>
-					<input type="text" placeholder="First Name" ng-model="firstName" />
-					<input type="text" placeholder="Last Name" ng-model="lastName" />
-					<input type="text" placeholder="email address" ng-model="email" />
-					<input type="password" placeholder="password" ng-model="password" />
-					<input type="text" placeholder="Mobile" ng-model="mobile" />
-					<input type="text" placeholder="Address" ng-model="address" />
-					<button ng-click="login()">create</button>
-					<p class="message">Already registered? <a class="cursor-pointer" ng-click="hasLogin = !hasLogin">Sign In</a></p>
-				</form>
-				<p class="message">Admin Login? <a class="cursor-pointer" ng-click="isUser = !isUser">Login</a></p>
-			</div>
-			<form class="register-form" ng-hide="isUser">
-				<input type="text" placeholder="name" ng-model="email" />
-				<input type="password" placeholder="password" ng-model="inputpassword" />
-				<button ng-click="login()">admin login</button>
-				<p class="message">Not an admin? <a class="cursor-pointer" ng-click="isUser = !isUser">Login</a></p>
-			</form>
-		</div>
-	</div>
-</div>
+<section id="form">
+    <!--form-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-1">
+                <div class="login-form">
+                    <!--login form-->
+                    <h2>Login to your account</h2>
+                    <form>
+                    <span ng-bind="error" class="text-danger"></span>
+                        <input type="email" placeholder="Email Address" ng-model="loginEmail"/>
+                        <input type="password" placeholder="Password" ng-model="loginPassword"/>
+                        <span>
+								<input type="checkbox" class="checkbox"> 
+								Keep me signed in
+							</span>
+                        <button type="submit" class="btn btn-default" ng-click="login(loginEmail, loginPassword)">Login</button>
+                    </form>
+                </div>
+                <!--/login form-->
+            </div>
+            <div class="col-sm-1">
+                <h2 class="or">OR</h2>
+            </div>
+            <div class="col-sm-4">
+                <div class="signup-form">
+                    <!--sign up form-->
+                    <h2>New User Signup!</h2>
+                    <form>
+                        <input type="text" placeholder="Name" ng-model="firstName"/>
+                        <input type="email" placeholder="Email Address" ng-model="signupEmail"/>
+                        <input type="password" placeholder="Password" ng-model="signupPassword"/>
+                        <button type="submit" class="btn btn-default" ng-click="signup(firstName, signupEmail, signupPassword)">Signup</button>
+                    </form>
+                </div>
+                <!--/sign up form-->
+            </div>
+        </div>
+    </div>
+</section>
+<!--/form-->

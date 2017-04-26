@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row row-padding-bottom">
+        <div class="col-md-8">
+            <div class="h3">Yarns</div>
+        </div>
+        <div class="col-md-2">
+            <button ng-click="addYarn()" class="btn btn-primary">Add Yarn</button>
+        </div>
+    </div>
+    <div class="row row-padding-bottom">
+        <div class="col-md-10">
+            <div class="row row-padding-bottom well" ng-repeat="yarn in yarns">
+                <div class="col-md-2"><img src="" alt="" class="img img-responsive img-rounded"></div>
+                <div class="col-md-2">{{yarn.name}}</div>
+                <div class="col-md-2">{{yarn.percentage + '%'}}</div>
+                <div class="col-md-1">{{yarn.syntheticPercentage + '%'}}</div>
+                <div class="col-md-1">{{yarn.ticket}}</div>
+                <div class="col-md-1">{{yarn.color}}</div>
+                <div class="col-md-1">{{yarn.length + ' m'}}</div>
+                <div class="col-md-1">{{'Rs. ' + yarn.price}}</div>
+                <div class="col-md-1"><button class="btn btn-danger" ng-click="deleteYarn(yarn)"><i class="fa fa-trash"></i></button></div>
+            </div>
+        </div>
+    </div>
+
+</div>

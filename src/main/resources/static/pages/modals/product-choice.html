@@ -1,0 +1,27 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Choose the product type you want to add</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="input-group">
+                    <input type="radio" name="fabrics" value="fabrics" ng-model="choice" /><label for="fabrics">Fabrics</label>
+                </div>
+                <div class="input-group">
+                    <input type="radio" name="garments" value="garments" ng-model="choice" /><label for="garments">Garments</label>
+                </div>
+                <div class="input-group">
+                    <input type="radio" name="yarns" value="yarns" ng-model="choice" /><label for="yarns">Yarns</label>
+                </div>
+                <div class="input-group">
+                    <input type="radio" name="raw-materials" value="raw-materials" ng-model="choice" /><label for="raw-materials">Raw-Materials</label>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="$close(choice)">OK</button>
+    <button class="btn btn-primary" type="button" ng-click="$dismiss()">Cancel</button>
+</div>
