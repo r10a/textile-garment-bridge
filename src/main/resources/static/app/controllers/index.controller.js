@@ -7,6 +7,7 @@
 
         $scope.account = account;
         $scope.user = USER;
+        $scope.admin = false;
 
         function account() {
             console.log(USER);

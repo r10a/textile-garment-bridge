@@ -30,6 +30,9 @@ public class RawMaterialModel {
 	@Column(name = " QUANTITY")
 	Long quantity;
 	
+	@Column(name = "IMAGE")
+	String imageUrl;
+	
 	@Column(name = "PRICE")
 	Double price;
 	

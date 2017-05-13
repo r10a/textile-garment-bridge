@@ -1,0 +1,45 @@
+<body>
+
+    <div class="container" style="width: 400px;">
+
+        <div class="content clearfix">
+
+
+            <h1>Member Login</h1>
+
+            <div class="login-fields">
+
+                <p>Please provide your details</p>
+
+                <div class="field">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" value="" placeholder="Username" class="form-control" ng-model="username" />
+                </div>
+                <!-- /field -->
+
+                <div class="field">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" value="" placeholder="Password" class="form-control" ng-model="password" />
+                </div>
+                <!-- /password -->
+
+            </div>
+            <!-- /login-fields -->
+			
+			<br/>
+            <div class="login-actions">
+                <span class="text-danger" ng-bind="error"></span>
+                <button class="btn btn-success" ng-click="login(username, password)">Sign In</button>
+
+            </div>
+            <br/>
+            <!-- .actions -->
+
+
+
+        </div>
+        <!-- /content -->
+
+    </div>
+    <!-- /account-container -->
+</body>

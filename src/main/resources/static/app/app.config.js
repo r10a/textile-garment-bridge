@@ -39,6 +39,10 @@
             url: "/sell",
             controller: "SellerController",
             templateUrl: "./pages/products-seller.html"
+        }).state('admin-login', {
+            url: "/admin-login",
+            controller: "AdminController",
+            templateUrl: "./pages/admin-login.html"
         });
     }
 

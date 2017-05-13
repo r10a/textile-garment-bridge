@@ -72,31 +72,43 @@
                     let url = "";
                     let putLink = "";
                     let listedProduct = "";
+                    let transaction = "";
                     switch (choice) {
                         case "fabrics":
                             url = '/fabrics';
                             putLink = USER.info._links.listedFabrics.href;
                             listedProduct = "listedFabrics";
+                            transaction = "Listed a fabric for selling";
                             break;
                         case "garments":
                             url = '/garments';
                             putLink = USER.info._links.listedGarments.href;
                             listedProduct = "listedGarments";
+                            transaction = "Listed a Garment for selling";
                             break;
                         case "yarns":
                             url = '/yarns';
                             putLink = USER.info._links.listedYarns.href;
                             listedProduct = "listedYarns";
+                            transaction = "Listed a Yarn for selling";
                             break;
                         case "raw-materials":
                             url = '/raw-materials';
                             putLink = USER.info._links.listedRawMaterials.href;
                             listedProduct = "listedRawMaterials";
+                            transaction = "Listed a Raw Material for selling";
                             break;
                     }
 
                     $http.post(url, product).then(savedProduct => {
                         console.log(savedProduct);
+
+                        let summary = {};
+                        summary.username = USER.info.email;
+                        summary.transaction = transaction + " with name: " + savedProduct.data.name;
+                        summary.date = new Date();
+
+                        $http.post('/transactions', summary).then(response => console.log(response, "logged successfully"));
 
                         let uriList = "";
                         $http.get(USER.info._links[listedProduct].href).then(response => {
@@ -116,7 +128,7 @@
                         }).then(response => {
                             console.log(response);
                             viewFabrics();
-                        });;
+                        });
                     });
 
                 }, () => {});

@@ -52,7 +52,8 @@
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                 <div class="productinfo text-center">
-                                    <img src="images/home/product1.jpg" alt="" />
+                                    <!-- <img src="images/home/product1.jpg" alt="" /> -->
+                                    <img ng-src="{{product.imageUrl}}" alt="" />
                                     <h2 ng-bind="'Rs. ' + product.price"></h2>
                                     <p ng-bind="product.name"></p>
                                     <a ng-click="addToCart(product)" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>

@@ -33,6 +33,9 @@ public class FabricModel {
 	@Column(name = "LENGTH")
 	Double length;
 	
+	@Column(name = "IMAGE")
+	String imageUrl;
+	
 	@Column(name = "PRICE")
 	Double price;
 
