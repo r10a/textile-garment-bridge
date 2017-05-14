@@ -22,6 +22,11 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <script type="text/javascript">
+    	function logout(){
+    		window.location = "/";
+    	}
+    </script>
 
 </head>
 
@@ -59,13 +64,13 @@
 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="icon-user"></i> EGrappler.com
+                                <i class="icon-user"></i> Admin
                                 <b class="caret"></b>
                             </a>
 
                             <ul class="dropdown-menu">
                                 <li><a href="javascript:;">Profile</a></li>
-                                <li><a href="javascript:;">Logout</a></li>
+                                <li><a href="javascript:logout();">Logout</a></li>
                             </ul>
                         </li>
                     </ul>
